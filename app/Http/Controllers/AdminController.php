@@ -21,4 +21,8 @@ class AdminController extends Controller
             }
         }
     }
+    public function getHomePage()
+    {
+        return view('home.index');
+    }
 }
