@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -24,5 +25,25 @@ class AdminController extends Controller
     public function getHomePage()
     {
         return view('home.index');
+    }
+    public function getCreatePage()
+    {
+        return view('admin.create_room');
+    }
+    public function addRoom(Request $request)
+    {
+        $data = new Room();
+        $data->title = $request->title;
+        $data->desc = $request->desc;
+        $data->price = $request->price;
+        $data->type = $request->type;
+        $image = $request->image;
+        if ($image) {
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $request->image->move('room', $imageName);
+            $data->image = $imageName;
+        }
+        $data->save();
+        return redirect()->back();
     }
 }

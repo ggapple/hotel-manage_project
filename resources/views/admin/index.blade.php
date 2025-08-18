@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
-<!-- Css  -->
-@include('admin.css')
+
+<head>
+    <!-- Css  -->
+    @include('admin.css')
+</head>
 
 <body>
     <!-- Header -->

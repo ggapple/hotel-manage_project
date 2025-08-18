@@ -26,3 +26,5 @@ use App\Http\Controllers\AdminController;
 // });
 route::get('/', [AdminController::class, 'getHomePage']);
 route::get('/home', [AdminController::class, 'getIndex'])->name('home');
+route::get('/create_room', [AdminController::class, 'getCreatePage']);
+route::post('/add_room', [AdminController::class, 'addRoom']);
