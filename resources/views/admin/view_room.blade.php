@@ -4,6 +4,14 @@
 <head>
     <!-- Css  -->
     @include('admin.css')
+    <style>
+        table,
+        th,
+        td {
+            border: 5px solid #ddd;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,11 +27,11 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">Room title</th>
-                            <th class="col-5" scope="col">Description</th>
+                            <th class="col-4" scope="col">Description</th>
                             <th scope="col">Price</th>
                             <th scope="col">Room type</th>
                             <th scope="col">Image</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" colspan="2" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,7 +42,9 @@
                             <td>{{$data->price}}</td>
                             <td>{{$data->type}}</td>
                             <td><img width="80px" src="room/{{$data->image}}" alt=""></td>
-                            <td><a class="btn btn-danger" href="{{url('delete_room',$data->id)}}" onclick="return confirm('Do you want to delete this room')">Delete</a></td>
+                            <td><a class="btn btn-danger" href="{{url('delete_room',$data->id)}}" onclick="return confirm('Do you want to delete this room')">Delete</a>
+                            </td>
+                            <td><a class="btn btn-warning" href="{{url('update_room',$data->id)}}">Update</a></td>
                         </tr>
                         @endforeach
                     </tbody>

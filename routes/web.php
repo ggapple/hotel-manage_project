@@ -30,3 +30,5 @@ route::get('/create_room', [AdminController::class, 'getCreatePage']);
 route::post('/add_room', [AdminController::class, 'addRoom']);
 route::get('/view_room', [AdminController::class, 'getViewPage']);
 route::get('/delete_room/{id}', [AdminController::class, 'deleteRoom']);
+route::get('/update_room/{id}', [AdminController::class, 'getUpdatePage']);
+route::post('/edit_room/{id}', [AdminController::class, 'editRoom']);
