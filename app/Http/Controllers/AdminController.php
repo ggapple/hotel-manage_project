@@ -51,4 +51,10 @@ class AdminController extends Controller
         $data->save();
         return redirect()->back();
     }
+    public function deleteRoom($id)
+    {
+        $data = Room::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
 }

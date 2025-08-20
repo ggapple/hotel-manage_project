@@ -29,3 +29,4 @@ route::get('/home', [AdminController::class, 'getIndex'])->name('home');
 route::get('/create_room', [AdminController::class, 'getCreatePage']);
 route::post('/add_room', [AdminController::class, 'addRoom']);
 route::get('/view_room', [AdminController::class, 'getViewPage']);
+route::get('/delete_room/{id}', [AdminController::class, 'deleteRoom']);
