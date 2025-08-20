@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Description</label>
-                            <textarea class="form-control bg-white" id="" rows="3" name="decs" placeholder="Enter description"></textarea>
+                            <textarea class="form-control bg-white" id="" rows="3" name="desc" placeholder="Enter description"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Price</label>

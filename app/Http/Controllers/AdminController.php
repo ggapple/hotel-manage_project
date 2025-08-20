@@ -30,6 +30,11 @@ class AdminController extends Controller
     {
         return view('admin.create_room');
     }
+    public function getViewPage()
+    {
+        $data = Room::all();
+        return view('admin.view_room', compact('data'));
+    }
     public function addRoom(Request $request)
     {
         $data = new Room();
