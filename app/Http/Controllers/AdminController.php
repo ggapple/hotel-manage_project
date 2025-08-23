@@ -14,7 +14,8 @@ class AdminController extends Controller
         if (Auth::id()) {
             $usertype = Auth()->user()->usertype;
             if ($usertype == 'user') {
-                return view('home.index');
+                $room = Room::all();
+                return view('home.index', compact('room'));
             } elseif ($usertype == 'admin') {
                 return view('admin.index');
             } else {
@@ -24,7 +25,8 @@ class AdminController extends Controller
     }
     public function getHomePage()
     {
-        return view('home.index');
+        $room = Room::all();
+        return view('home.index', compact('room'));
     }
     public function getCreatePage()
     {
