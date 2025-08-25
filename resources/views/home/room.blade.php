@@ -11,15 +11,17 @@
         <div class="row">
             @foreach($room as $rooms)
             <div class="col-md-4 col-sm-6">
-                <div id="serv_hover" class="room">
-                    <div class="room_img">
-                        <figure><img style="height: 200px; width:350px" src="room/{{$rooms->image}}" alt="#" /></figure>
+                <a href="{{url('details_room',$rooms->id)}}">
+                    <div id="serv_hover" class="room">
+                        <div class="room_img">
+                            <figure><img style="height: 200px; width:350px" src="room/{{$rooms->image}}" alt="#" /></figure>
+                        </div>
+                        <div class="bed_room">
+                            <h3>{{$rooms->title}}</h3>
+                            <p>{!! Str::limit($rooms->desc,100)!!}</p>
+                        </div>
                     </div>
-                    <div class="bed_room">
-                        <h3>{{$rooms->title}}</h3>
-                        <p>{!! Str::limit($rooms->desc,100)!!}</p>
-                    </div>
-                </div>
+                </a>
             </div>
             @endforeach
         </div>
