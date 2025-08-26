@@ -32,10 +32,10 @@
             </div>
             <div class="row">
 
-                <div class="col-md-8 col-sm-6">
+                <div class="col-md-6 col-sm-6">
                     <div id="serv_hover" class="room">
                         <div class="room_img">
-                            <figure><img style="height: 500px; width:700px" src="/room/{{$room->image}}" alt="#" /></figure>
+                            <figure><img style="height: 300px; width:500px" src="/room/{{$room->image}}" alt="#" /></figure>
                         </div>
                         <div class="bed_room">
                             <h3>{{$room->title}}</h3>
@@ -44,6 +44,60 @@
                             <h3>Price: {{$room->price}}</h3>
                         </div>
                     </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h1 class="text-center">BOOK ROOM</h1>
+                    <form action="{{url('add_booking',$room->id)}}" method="post">
+                        @csrf
+
+                        @if ($errors)
+                        @foreach($errors->all() as $errors)
+                        <li style="color: red;">
+                            {{$errors}}
+                        </li>
+                        @endforeach
+                        @endif
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="" name="name" @if(Auth::id()) value="{{Auth::user()->name}}" @endif placeholder="John Doe">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="" name="email"
+                                    @if(Auth::id()) value="{{Auth::user()->email}}" @endif placeholder="johndoe@gmail.com">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Phone</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="" name="phone"
+                                    @if(Auth::id()) value="{{Auth::user()->phone}}" @endif placeholder="0333444555">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Start date</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="startDate" name="startDate">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">End date</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="endDate" name="endDate">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn btn-primary btn-block">Book room</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -54,14 +108,30 @@
 
         <!--  footer -->
         @include('home.footer')
+
         <!-- end footer -->
-        <!-- Javascript files-->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery-3.0.0.min.js"></script>
-        <!-- sidebar -->
-        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="js/custom.js"></script>
+        <script>
+            $(function() {
+                var dtToday = new Date();
+
+                var month = dtToday.getMonth() + 1;
+
+                var day = dtToday.getDate();
+
+                var year = dtToday.getFullYear();
+
+                if (month < 10)
+                    month = '0' + month.toString();
+
+                if (day < 10)
+                    day = '0' + day.toString();
+
+                var maxDate = year + '-' + month + '-' + day;
+                $('#startDate').attr('min', maxDate);
+                $('#endDate').attr('min', maxDate);
+
+            });
+        </script>
 </body>
 
 </html>
