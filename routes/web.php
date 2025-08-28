@@ -33,6 +33,7 @@ route::get('/view_room', [AdminController::class, 'getViewPage']);
 route::get('/delete_room/{id}', [AdminController::class, 'deleteRoom']);
 route::get('/update_room/{id}', [AdminController::class, 'getUpdatePage']);
 route::post('/edit_room/{id}', [AdminController::class, 'editRoom']);
+route::get('/bookings', [AdminController::class, 'getBookingPage']);
 
 route::get('/details_room/{id}', [HomeController::class, 'getDetailsPage']);
 route::post('/add_booking/{id}', [HomeController::class, 'addBooking']);

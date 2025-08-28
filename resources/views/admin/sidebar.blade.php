@@ -19,5 +19,7 @@
                     <li><a href="{{url('create_room')}}">Add rooms</a></li>
                 </ul>
             </li>
+
+            <li><a href="{{url('bookings')}}"> <i class="icon-home"></i>Manage Bookings </a></li>
         </ul>
     </nav>
