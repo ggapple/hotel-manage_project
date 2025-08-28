@@ -47,7 +47,15 @@
                 </div>
 
                 <div class="col-md-6">
-                    <h1 class="text-center">BOOK ROOM</h1>
+                    <h1 class="text-center" style="font-size: 40px !important;">BOOK ROOM</h1>
+                    <div>
+                        @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{session()->get('message')}}
+                        </div>
+                        @endif
+                    </div>
+
                     <form action="{{url('add_booking',$room->id)}}" method="post">
                         @csrf
 
