@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="titlepage">
-                        <h2>Our Room</h2>
+                        <h2>{{$room->type}} Room</h2>
                         <p>Lorem Ipsum available, but the majority have suffered </p>
                     </div>
                 </div>
@@ -38,16 +38,14 @@
                             <figure><img style="height: 300px; width:500px" src="/room/{{$room->image}}" alt="#" /></figure>
                         </div>
                         <div class="bed_room">
-                            <h3>{{$room->title}}</h3>
                             <p>{{$room->desc}}</p>
-                            <h4>Room type: {{$room->type}}</h4>
-                            <h3>Price: {{$room->price}}</h3>
+                            <h3>Price: {{$room->price}}$/day</h3>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-6">
-                    <h1 class="text-center" style="font-size: 40px !important;">BOOK ROOM</h1>
+                    <h1 class="text-center" style="font-size: 40px !important;">BOOK NOW</h1>
                     <div>
                         @if(session()->has('message'))
                         <div class="alert alert-success">
@@ -99,6 +97,12 @@
                                 <input type="date" class="form-control" id="endDate" name="endDate">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">Total price</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="total" name="total" readonly>
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <div class="col-sm-12">
@@ -118,6 +122,33 @@
         @include('home.footer')
 
         <!-- end footer -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const startInput = document.getElementById("startDate");
+                const endInput = document.getElementById("endDate");
+                const totalInput = document.getElementById("total");
+                const pricePerDay = parseFloat("{{ $room->price }}");
+
+                function calculateTotal() {
+                    const startDate = new Date(startInput.value);
+                    const endDate = new Date(endInput.value);
+
+                    if (!isNaN(startDate) && !isNaN(endDate) && endDate >= startDate) {
+                        const diffTime = endDate - startDate;
+                        let diffDays = diffTime / (1000 * 60 * 60 * 24);
+                        if (diffDays === 0) {
+                            diffDays = 1;
+                        }
+                        totalInput.value = pricePerDay * diffDays;
+                    } else {
+                        totalInput.value = "";
+                    }
+                }
+
+                startInput.addEventListener("change", calculateTotal);
+                endInput.addEventListener("change", calculateTotal);
+            });
+        </script>
         <script>
             $(function() {
                 var dtToday = new Date();

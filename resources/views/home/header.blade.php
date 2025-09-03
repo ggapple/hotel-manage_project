@@ -46,13 +46,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{url('login')}}">Login</a>
                             </li>
-                            @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('register')}}">Register</a>
-                            </li>
-                            @endif
                             @endauth
-
                             @endif
 
                         </ul>
