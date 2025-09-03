@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('bookings', function (Blueprint $table) {
             $table->string('status')->default('waiting')->after('phone');
+            $table->string('total')->after('status');
         });
     }
 
@@ -22,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('bookings', function (Blueprint $table) {
-            $table->dropColumn('status');
+            $table->dropColumn(['status', 'total']);
         });
     }
 };

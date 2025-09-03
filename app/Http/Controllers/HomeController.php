@@ -18,8 +18,19 @@ class HomeController extends Controller
     {
         $request->validate([
             'startDate' => 'required|date',
-            'endDate' => 'date|after:startDate',
+            'endDate' => 'required|date|after_or_equal:startDate',
         ]);
+
+        // $room = Room::findOrFail($id);
+
+        // $startDate = new \DateTime($request->startDate);
+        // $endDate   = new \DateTime($request->endDate);
+        // $diffDays  = $endDate->diff($startDate)->days;
+
+        // if ($diffDays == 0) {
+        //     $diffDays = 1;
+        // }
+        // $total = $room->price * $diffDays;
 
         $data = new Booking();
         $data->room_id = $id;
@@ -28,6 +39,7 @@ class HomeController extends Controller
         $data->phone = $request->phone;
         $data->start_date = $request->startDate;
         $data->end_date = $request->endDate;
+        $data->total = $request->total;
 
         $data->save();
         return redirect()->back()->with('message', 'Room booked successfully');
