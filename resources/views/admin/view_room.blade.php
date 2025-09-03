@@ -26,10 +26,11 @@
                 <table class="table">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Room title</th>
+                            <th scope="col">Room type</th>
                             <th class="col-4" scope="col">Description</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Room type</th>
+                            <th scope="col">Number of rooms</th>
+                            <th scope="col">Number of rented</th>
                             <th scope="col">Image</th>
                             <th scope="col" colspan="2" class="text-center">Action</th>
                         </tr>
@@ -37,10 +38,11 @@
                     <tbody>
                         @foreach($data as $data)
                         <tr>
-                            <th>{{$data->title}}</th>
+                            <th>{{$data->type}}</th>
                             <td>{!! Str::limit($data->desc,100)!!}</td>
                             <td>{{$data->price}}</td>
-                            <td>{{$data->type}}</td>
+                            <td>{{$data->num_of_room}}</td>
+                            <td>{{$data->num_of_rented}}</td>
                             <td><img width="100px" src="room/{{$data->image}}" alt=""></td>
                             <td><a class="btn btn-danger" href="{{url('delete_room',$data->id)}}" onclick="return confirm('Do you want to delete this room')">Delete</a>
                             </td>

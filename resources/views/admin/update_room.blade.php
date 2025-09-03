@@ -19,9 +19,19 @@
 
                     <form action="{{url('edit_room',$data->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="">Room title</label>
                             <input type="text" class="form-control" id="" name="title" value="{{$data->title}}" placeholder="Enter title">
+                        </div> -->
+
+                        <div class="form-group">
+                            <label for="">Room type</label>
+                            <select class="form-control bg-white" id="" name="type">
+                                <option value="{{$data->type}}">{{$data->type}}</option>
+                                <option value="Regular">Regular</option>
+                                <option value="Premium">Premium</option>
+                                <option value="Deluxe">Deluxe</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Description</label>
@@ -30,15 +40,6 @@
                         <div class="form-group">
                             <label for="">Price</label>
                             <input type="text" class="form-control" id="" name="price" value="{{$data->price}}" placeholder="Enter price">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Room type</label>
-                            <select class="form-control bg-white" id="" name="type">
-                                <option value="{{$data->type}}">{{$data->type}}</option>
-                                <option value="regular">Regular</option>
-                                <option value="premium">Premium</option>
-                                <option value="deluxe">Deluxe</option>
-                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Current image</label>
